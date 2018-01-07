@@ -1,9 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Hello } from "./components/hello";
+//import { Hello } from "./components/hello";
+import { Outer } from "./components/outer";
 
 ReactDOM.render(
-    <Hello compiler="Typescript" framework="React" />,
+   <Outer/>,
     document.getElementById("example")
 );

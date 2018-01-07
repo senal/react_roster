@@ -942,8 +942,9 @@ module.exports = focusNode;
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(2);
 var ReactDOM = __webpack_require__(18);
-var hello_1 = __webpack_require__(27);
-ReactDOM.render(React.createElement(hello_1.Hello, { compiler: "Typescript", framework: "React" }), document.getElementById("example"));
+//import { Hello } from "./components/hello";
+var outer_1 = __webpack_require__(27);
+ReactDOM.render(React.createElement(outer_1.Outer, null), document.getElementById("example"));
 
 
 /***/ }),
@@ -18272,24 +18273,58 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(2);
-// 'HelloProps' describes the shape of props
-// State is never set so we use the '{}' type.
-var Hello = /** @class */ (function (_super) {
-    __extends(Hello, _super);
-    function Hello() {
+var inner_1 = __webpack_require__(28);
+var Outer = /** @class */ (function (_super) {
+    __extends(Outer, _super);
+    function Outer() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Hello.prototype.render = function () {
-        return React.createElement("h1", null,
-            "Hello from ",
-            this.props.compiler,
-            " and ",
-            this.props.framework,
-            " ! ");
+    Outer.prototype.render = function () {
+        return React.createElement("div", null,
+            React.createElement("h2", null,
+                "Outer ",
+                React.createElement("header", null)),
+            React.createElement(inner_1.Inner, null));
     };
-    return Hello;
+    return Outer;
 }(React.Component));
-exports.Hello = Hello;
+exports.Outer = Outer;
+
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(2);
+var Inner = /** @class */ (function (_super) {
+    __extends(Inner, _super);
+    function Inner(props) {
+        var _this = _super.call(this, props) || this;
+        _this.state = { name: "Ranga" };
+        return _this;
+    }
+    Inner.prototype.render = function () {
+        return React.createElement("div", null,
+            "hello my name is ",
+            this.state.name,
+            " ");
+    };
+    return Inner;
+}(React.Component));
+exports.Inner = Inner;
 
 
 /***/ })
